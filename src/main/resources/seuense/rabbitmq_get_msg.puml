@@ -1,0 +1,5 @@
+@startuml
+Consumer->>Broker: Basic.Get
+Broker-->>Consumer: Basic.Get-Ok(Basic.Get-Ok会携带单条消息)
+Consumer->>Broker: Basic.Ack
+@enduml

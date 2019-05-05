@@ -1,0 +1,12 @@
+@startuml
+== 此处省略开启\nConnection与channel ==
+
+Product->>Broker: Tx.Select
+Broker-->>Product: Tx.Select-Ok
+Product->>Broker: Basic.Publish
+Product->>Broker: Tx.Rollback
+Broker-->>Product: Tx.Rollback-Ok
+
+== 此处省略关闭\nConnection与channel ==
+
+@enduml

@@ -1,0 +1,24 @@
+@startuml
+Product->>Broker: Protocol Header
+note left: ①建立连接
+note right: factory.newConnection
+Broker-->>Product: Connection.Start
+Product->>Broker: Connection.Start-Ok
+Broker-->>Product: Connection.Tune
+Product->>Broker: Connection.Tune-Ok
+Product->>Broker: Connection.Open
+Broker-->>Product: Connection.Open-Ok
+Product->>Broker: Channel.Open
+note left: ②开启信道
+note right: connection.createChannel
+Broker-->>Product: Channel.Open-Ok
+Product->>Broker: Basic.Publish
+note left: ③发送消息
+note right: channel.basicPublish
+Product->>Broker: Channel.Close
+note left: ④释放资源
+note right: channel.close/connection.close
+Broker-->>Product: Channel.Close-Ok
+Product->>Broker: Connectiion.Close
+Broker-->>Product: Connectiion.Close-Ok
+@enduml
